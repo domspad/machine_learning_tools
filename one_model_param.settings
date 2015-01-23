@@ -1,0 +1,81 @@
+
+SET params 
+
+ex:  for sgd_classifier
+
+{'alpha': 0.0001,
+ 'class_weight': None,
+ 'epsilon': 0.1,
+ 'eta0': 0.0,
+ 'fit_intercept': True,
+ 'l1_ratio': 0.15,
+ 'learning_rate': 'optimal',
+ 'loss': 'hinge',
+ 'n_iter': 5,
+ 'n_jobs': 1,
+ 'penalty': 'l2',
+ 'power_t': 0.5,
+ 'random_state': None,
+ 'rho': None,
+ 'shuffle': False,
+ 'verbose': 0,
+ 'warm_start': False}
+
+# randfor
+
+{
+				'n_estimators':			[40],
+				#criterion:				'gini', 
+				# max_depth:				None, 	
+				# min_samples_split:		2, 
+				'min_samples_leaf':		[100], 
+				# 'max_features':			[None,'auto',0.5],
+				# bootstrap:				True, 
+				# oob_score:				False, 
+				# n_jobs:					1, 
+				# random_state:			None, 
+				'verbose':				[1], 
+				# min_density:			None, 
+				# compute_importances:	None
+				}
+
+
+ # svc
+ 				{
+				'C':				[1.0,0.5],  #penalty parameter
+				'kernel':			['rbf'],	#kernel used in alg (linear, poly, rbf, sigmoid, precompute)
+				'degree':			[1,2,3,4,5],		#degree of poly (if 'poly' given)
+				#'gamma':			#0.0 	kernel coefficient for 'rbf, 'poly', 'sigmoid' NOTE 0.0 --> 1/NUMFEAT
+				#'coef0': 			#0.0 	independent term in kernel function only in 'poly' and 'sigmoid'
+				#'probability':		#False	give probability estimates
+				#'shrinking':		#True	whether to use shrinking heuristic
+				#'tol': 				#1e-3	Tolerence for stopping criterion
+				#'cache_size':		#		specify size of kernal cache
+				'class_weight':		[None,'auto'],#		{dict,'auto'} set C of class i to class_weight[i]*C. 'auto' users values of y to automatically adjust weights inversely to class freq
+				'verbose':			[True]
+				#'max_iter':			#-1 	hard limit on iters
+				#'random_state':		#None 	int seed or randomstate instance. seed of rand num gen used for shuffling data for prob estimation
+				}
+
+# AdaBoost
+{
+				 'algorithm': 						['SAMME.R'], # SAMME.R, SAMME and if SAMME.R then base_estimator must support calc of class probs 
+				 'base_estimator': 					[DecisionTreeClassifier(max_depth=1, min_samples_leaf=1),
+				 									DecisionTreeClassifier(max_depth=5, min_samples_leaf=1),
+				 									DecisionTreeClassifier(max_depth=1, min_samples_leaf=100),
+				 									DecisionTreeClassifier(max_depth=5, min_samples_leaf=100)],
+				#  'base_estimator__compute_importances': None,
+				#  'base_estimator__criterion': 			'gini',
+				  # 'base_estimator__max_depth': 			[1,5],
+				#  'base_estimator__max_features':		 None,
+				#  'base_estimator__min_density': 		None,
+				  # 'base_estimator__min_samples_leaf':	 [1,100],
+				#  'base_estimator__min_samples_split': 		2,
+				#  'base_estimator__random_state': 		None,
+				#  'base_estimator__splitter': 			'best',
+				  'learning_rate': 						[1.0,0.5],  #shrinks contribution of each classifier (theres a tradeoff b/w this and n_estimatros)
+				 'n_estimators':						 [50,100,200]
+				 # 'random_state': 						None
+				 }
+
+
